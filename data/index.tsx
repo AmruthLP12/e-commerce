@@ -35,3 +35,11 @@ export const menus = [
       href: "#",
     },
   ];
+
+  export const tableThead = [
+    {title:"SR No."},
+    {title:"Name"},
+    {title:"Price"},
+    {title:"Picture"},
+    {title:"Actions"},
+  ]
