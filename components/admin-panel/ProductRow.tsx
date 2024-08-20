@@ -29,24 +29,31 @@ const ProductRow = ({
   const onDelete = () => {};
 
   return (
-    <div>
+    <tr>
       <td>{srNo}</td>
+      <td>{product.name}</td>
+      <td>$ {product.price}</td>
       <td>
-        <div>{product.name}</div>
-      </td>
-      <td>
-        <div>$ {product.price}</div>
-      </td>
-      <td>
-        <Image src={product.imgSrc} width={40} height={40} alt="product_image"/>
+        <Image
+          src={product.imgSrc}
+          width={40}
+          height={40}
+          alt="product_image"
+        />
       </td>
       <td>
         <div className="text-2xl flex items-center gap-2 text-gray-600">
-            <CiEdit className="cursor-pointer hover:text-black" onClick={onEdit}/>
-            <RiDeleteBin5Line className="text-[20px] cursor-pointer hover:text-red-600" onClick={onDelete} />
+          <CiEdit
+            className="cursor-pointer hover:text-black"
+            onClick={onEdit}
+          />
+          <RiDeleteBin5Line
+            className="text-[20px] cursor-pointer hover:text-red-600"
+            onClick={onDelete}
+          />
         </div>
       </td>
-    </div>
+    </tr>
   );
 };
 

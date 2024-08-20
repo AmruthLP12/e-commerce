@@ -1,4 +1,5 @@
 "use client";
+import Popup from "@/components/admin-panel/Popup";
 import ProductRow from "@/components/admin-panel/ProductRow";
 import { tableThead } from "@/data";
 import { setLoading } from "@/redux/features/loadingSlice";
@@ -60,9 +61,9 @@ const Dashboard = () => {
           </table>
         </div>
       </div>
-      {/* {openPopup && (
-        <popup setOpenPopup={setOpenPopup} setUpdateTable={setUpdateTable} />
-      )} */}
+      {openPopup && (
+        <Popup setOpenPopup={setOpenPopup} setUpdateTable={setUpdateTable} />
+      )}
     </div>
   );
 };

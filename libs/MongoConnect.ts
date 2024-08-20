@@ -6,6 +6,7 @@ export const connectMongoDB = async () => {
         return mongoose.connection.asPromise()
     }
 
+    console.log(process.env.MONGO_URI)
     return await mongoose.connect(process.env.MONGO_URI!)
     
 }

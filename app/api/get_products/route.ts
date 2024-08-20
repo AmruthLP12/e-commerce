@@ -5,11 +5,12 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     await connectMongoDB();
+    console.log("MongoDB connected");
 
     const data = await Product.find();
 
     return NextResponse.json(data);
   } catch (error) {
-    return NextResponse.json({ error, msg: "Mongo Error" }, { status: 400 });
+    return NextResponse.json({ error, msg: "GET Error" }, { status: 400 });
   }
 }
