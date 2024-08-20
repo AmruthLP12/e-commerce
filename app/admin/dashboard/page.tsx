@@ -12,7 +12,7 @@ export interface IProduct {
   imgSrc: string;
   fileKey: string;
   name: string;
-  price: string;
+  price: number;
   category: string;
 }
 
