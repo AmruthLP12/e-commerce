@@ -16,6 +16,7 @@ interface propsType {
 
 const TrendingProducts = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     axios
@@ -23,8 +24,12 @@ const TrendingProducts = () => {
       .then((res) => {
         console.log(res.data);
         setProducts(res.data);
+        setLoading(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setLoading(false); 
+      });
   }, []);
 
   return (
@@ -39,18 +44,24 @@ const TrendingProducts = () => {
         </div>
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-8">
-        {products.map((item: IProduct) => (
-          <ProductCard
-            key={item._id}
-            id={item._id}
-            img={item.imgSrc}
-            title={item.name}
-            price={item.price}
-            category={item.category}
-          />
-        ))}
-      </div>
+      {loading ? (
+        <div className="flex justify-center items-center mt-8">
+          <div className="trendingLoader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32"></div>
+        </div>
+      ) : (
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-8">
+          {products.map((item: IProduct) => (
+            <ProductCard
+              key={item._id}
+              id={item._id}
+              img={item.imgSrc}
+              title={item.name}
+              price={item.price}
+              category={item.category}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
