@@ -13,7 +13,7 @@ interface IPayload {
   fileKey: null | string;
   name: string;
   category: string;
-  price: string;
+  price: number;
 }
 
 const ProductForm = () => {
@@ -22,7 +22,7 @@ const ProductForm = () => {
     fileKey: null,
     name: "",
     category: "",
-    price: "",
+    price: 0,
   });
 
   const dispatch = useAppDispatch();
@@ -35,14 +35,14 @@ const ProductForm = () => {
     axios
       .post("/api/add_product", payload)
       .then((res) => {
-        console.log(res)
+        console.log(res);
         makeToast("Product Added Successfully");
         setPayload({
           imgSrc: null,
           fileKey: null,
           name: "",
           category: "",
-          price: "",
+          price: 0,
         });
       })
       .catch((err) => console.log(err))
@@ -104,9 +104,11 @@ const ProductForm = () => {
         <label className="block ml-1 ">Product Price</label>
         <input
           className="bg-gray-300 w-full px-4 py-2 border outline-pink rounded-md"
-          type="text"
+          type="number"
           value={payload.price}
-          onChange={(e) => setPayload({ ...payload, price: e.target.value })}
+          onChange={(e) =>
+            setPayload({ ...payload, price: Number(e.target.value) })
+          }
           required
         />
       </div>
