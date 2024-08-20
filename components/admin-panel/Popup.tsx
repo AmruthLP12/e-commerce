@@ -72,11 +72,11 @@ const Popup = ({ setOpenPopup, setUpdateTable }: propsType) => {
           />
           <input
             className="border block border-gray-500 outline-none px-4 py-2 rounded-lg w-fit"
-            type="text"
+            type="number"
             placeholder="Price"
             value={inputData.price}
             onChange={(e) =>
-              setInputData({ ...inputData, price: e.target.value })
+              setInputData({ ...inputData, price: Number(e.target.value) })
             }
             required
           />
